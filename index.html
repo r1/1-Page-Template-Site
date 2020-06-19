@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TITLE</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-bez@1.0.11/src/jquery.bez.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="pace.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <div class="logo">T</div>
+        </div>
+
+        <div class="gif"></div>
+
+        <div class="main">
+            <h1 class="glitch" data-text="Travis Scott">Travis Scott</h1>
+        </div>
+
+        <div class="social">
+            <ul>
+                <li>facebook</li>
+                <li>instagram</li>
+                <li>twitter</li>
+            </ul>
+        </div>
+    </div>
+    <div id="preloader"></div>
+    <div class="cursor"></div>
+    <script>
+        setTimeout(function () { $('#preloader').remove(); }, 19000);
+        paceOptions = {
+            ajax: true,
+            document: true,
+            eventLag: false
+        };
+
+        Pace.on('done', function () {
+            $('.p').delay(500).animate({ top: '30%', opacity: '0' }, 3000, $.bez([0.19, 1, 0.22, 1]));
+
+
+            $('#preloader').delay(1500).animate({ top: '-100%' }, 2000, $.bez([0.19, 1, 0.22, 1]));
+
+            TweenMax.from(".social", 2, {
+                delay: 1.9,
+                y: 10,
+                opacity: 0,
+                ease: Expo.easeInOut
+            })
+            TweenMax.from(".logo", 2, {
+                delay: 2,
+                y: 10,
+                opacity: 0,
+                ease: Expo.easeInOut
+            })
+            TweenMax.from("p", 2, {
+                delay: 2,
+                y: 10,
+                opacity: 0,
+                ease: Expo.easeInOut
+            })
+
+        });
+    </script>
+    <script>
+        const cursor = document.querySelector(".cursor");
+
+        document.addEventListener("mousemove", (e) => {
+            cursor.setAttribute(
+                "style",
+                "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;"
+            );
+        });
+
+        document.addEventListener("click", () => {
+            cursor.classList.add("expand");
+
+            setTimeout(() => {
+                cursor.classList.remove("expand");
+            }, 500);
+        });
+
+    </script>
+</body>
+
+</html>

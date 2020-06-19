@@ -1,0 +1,1 @@
+![](https://github.com/r1/1-Page-Template-Site/blob/master/img/site.png)
